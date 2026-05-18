@@ -312,7 +312,7 @@ span.yith-wcwl-add-to-wishlist-button__label {
 
 .woocommerce .product-details-page div.product .product-details-img div.images .flex-control-thumbs li {
   float: none;
-  width: calc(33.33% - 10px);
+  width: calc(24.70% - 10px);
   position: relative;
   cursor: pointer;
 }
