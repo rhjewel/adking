@@ -113,7 +113,7 @@ $tags = get_the_tags();
     <div class="row <?php echo esc_attr(is_active_sidebar('blog_dt_sidebar') ? 'justify-content-between' : 'justify-content-center'); ?>">
         <div class="<?php echo esc_attr(is_active_sidebar('blog_dt_sidebar') ? 'col-xl-7 col-lg-8' : 'col-xl-10'); ?>">
             <?php if (comments_open() || get_comments_number()) : ?>
-                <div class="comment-and-form-area mt-140">
+                <div class="comment-and-form-area mt-120">
                     <?php
                     //If comments are open or we have at least one comment, load up the comment template.
                     if (comments_open() || get_comments_number()) {

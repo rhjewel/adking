@@ -297,7 +297,7 @@ if (!class_exists('Egns_Helper')) {
 				return;
 			}
 ?>
-			<div class="blog-dt-related-blog-section mt-140">
+			<div class="blog-dt-related-blog-section mt-120">
 				<div class="container one">
 					<div class="row justify-content-center mb-60">
 						<div class="col-xl-10 col-lg-10 col-md-9">

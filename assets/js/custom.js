@@ -568,6 +568,72 @@
     });
   });
 
+  function adkingProductGalleryVideo() {
+    $(".woocommerce-product-gallery").each(function () {
+      var $gallery = $(this);
+
+      if ($gallery.data("adkingProductVideoReady")) {
+        return;
+      }
+
+      var $videoSlide = $gallery.find(".adking-product-video-slide").first();
+
+      if (!$videoSlide.length) {
+        return;
+      }
+
+      $gallery.data("adkingProductVideoReady", true);
+
+      var $video = $videoSlide.find("video").first();
+      var videoIndex = $gallery.find(".woocommerce-product-gallery__wrapper > .woocommerce-product-gallery__image").index($videoSlide);
+
+      function pauseVideo() {
+        if ($video.length) {
+          $video.get(0).pause();
+        }
+      }
+
+      function playVideo() {
+        if ($video.length) {
+          var promise = $video.get(0).play();
+
+          if (promise && typeof promise.catch === "function") {
+            promise.catch(function () {});
+          }
+        }
+      }
+
+      function syncVideoState() {
+        var isActive = $videoSlide.hasClass("flex-active-slide");
+
+        if (isActive) {
+          playVideo();
+        } else {
+          pauseVideo();
+        }
+      }
+
+      $gallery.find(".flex-control-thumbs li").eq(videoIndex).addClass("adking-product-video-thumb");
+
+      $gallery.on("mouseenter focusin", ".flex-control-thumbs li", function () {
+        $(this).find("img").trigger("click");
+      });
+
+      $gallery.on("mouseenter focusin", ".adking-product-video-thumb", playVideo);
+      $gallery.on("mouseleave", pauseVideo);
+
+      $gallery.on("click mouseenter focusin", ".flex-control-thumbs li", function () {
+        window.setTimeout(syncVideoState, 80);
+      });
+
+      $gallery.on("woocommerce_gallery_init_zoom flexslider:after", syncVideoState);
+      window.setTimeout(syncVideoState, 400);
+    });
+  }
+
+  $(window).on("load", adkingProductGalleryVideo);
+  $(document.body).on("wc_fragments_refreshed updated_wc_div", adkingProductGalleryVideo);
+
 
   // Back To Top
   $(document).ready(function () {

@@ -21,7 +21,7 @@ if (!is_front_page()) :
 endif;
 ?>
 
-<div class="page-wrapper mt-140 mb-140">
+<div class="page-wrapper mt-120 mb-120">
     <div class="page-content-wrapper">
         <?php
         // Hook to include additional content before blog post item

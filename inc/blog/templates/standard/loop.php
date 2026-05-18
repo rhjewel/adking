@@ -1,4 +1,4 @@
-<div class="blog-standard-page mt-140 mb-140">
+<div class="blog-standard-page mt-120 mb-120">
     <div class="container one">
         <div class="row gy-5 justify-content-between">
             <div class="<?php echo esc_attr(is_active_sidebar('blog_sidebar') ? 'col-xl-7 col-lg-8' : 'col-lg-10'); ?>">

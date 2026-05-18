@@ -19,7 +19,7 @@ if (!is_front_page()) {
 
 ?>
 
-<div class="home1-blog-section  mt-140 mb-140">
+<div class="home1-blog-section  mt-120 mb-120">
     <div class="container">
         <div class="row gy-5">
             <?php
@@ -43,47 +43,43 @@ if (!is_front_page()) {
             ?>
         </div>
         <?php
-        // Get the total number of pages.
         $total_pages = Egns\Inc\Blog_Helper::get_total_pages();
-        // Only paginate if there are multiple pages.
-        if ($total_pages > 1) {
+
+        if ($total_pages > 1) :
             $current_page = max(1, get_query_var('paged'));
         ?>
             <div class="row justify-content-center mt-70">
-                <div class="col-lg-8">
-                    <div class="pagination-area">
-                        <?php if ($current_page > 1): ?>
-                            <div class="paginations-button">
-                                <a href="<?php echo esc_url(get_pagenum_link($current_page - 1)); ?>">
-                                    <svg width="7" height="14" viewBox="0 0 7 14"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M0 7.00008L7 0L2.54545 7.00008L7 14L0 7.00008Z" />
-                                    </svg>
-                                    <?php echo esc_html__('Prev', 'adking') ?>
-                                </a>
-                            </div>
-                        <?php endif; ?>
-                        <?php
-                        // Pagination
-                         Egns\Inc\Blog_Helper::egns_pagination();
-                        ?>
-                        <?php if ($current_page < $total_pages): ?>
-                            <div class="paginations-button">
-                                <a href="<?php echo esc_url(get_pagenum_link($current_page + 1)); ?>">
-                                    <?php echo esc_html__('Next', 'adking') ?>
-                                    <svg width="7" height="14" viewBox="0 0 7 14"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M7 7.00008L0 0L4.45455 7.00008L0 14L7 7.00008Z" />
-                                    </svg>
-                                </a>
-                            </div>
-                        <?php endif; ?>
-                    </div>
+                <div class="inner-pagination-area fade_anim" data-delay=".2" data-ease="bounce">
+                    <?php if ($current_page > 1) : ?>
+                        <div class="paginations-button">
+                            <a href="<?php echo esc_url(get_pagenum_link($current_page - 1)); ?>">
+                                <svg width="10" height="10" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg">
+                                    <g>
+                                        <path d="M2.22201 5L8.88867 10V0L2.22201 5Z" />
+                                    </g>
+                                </svg>
+                                <?php echo esc_html__('Prev', 'adking'); ?>
+                            </a>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php Egns\Inc\Blog_Helper::egns_pagination(); ?>
+
+                    <?php if ($current_page < $total_pages) : ?>
+                        <div class="paginations-button">
+                            <a href="<?php echo esc_url(get_pagenum_link($current_page + 1)); ?>">
+                                <?php echo esc_html__('Next', 'adking'); ?>
+                                <svg width="10" height="10" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg">
+                                    <g>
+                                        <path d="M8.88932 5L2.22266 10L2.22266 0L8.88932 5Z" />
+                                    </g>
+                                </svg>
+                            </a>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
-        <?php
-        }
-        ?>
+        <?php endif; ?>
     </div>
 </div>
 

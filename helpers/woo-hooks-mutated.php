@@ -54,6 +54,63 @@ if (class_exists('WooCommerce')) {
     remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20);
 
     /**
+     * Get the uploaded product video URL from the Codestar product metabox.
+     */
+    function egns_adking_get_product_video_url($product_id)
+    {
+        $meta      = get_post_meta($product_id, 'EGNS_PRODUCT_META_ID', true);
+        $video_url = '';
+
+        if (is_array($meta) && !empty($meta['product_video'])) {
+            $video_url = $meta['product_video'];
+        } else {
+            $video_url = get_post_meta($product_id, 'product_video', true);
+        }
+
+        if (is_array($video_url)) {
+            $video_url = $video_url['url'] ?? $video_url['id'] ?? '';
+        }
+
+        if (is_numeric($video_url)) {
+            $video_url = wp_get_attachment_url((int) $video_url);
+        }
+
+        return $video_url ? esc_url($video_url) : '';
+    }
+
+    /**
+     * Add the product video as an extra WooCommerce gallery slide.
+     */
+    function egns_adking_add_product_video_gallery_slide()
+    {
+        global $product;
+
+        if (!$product instanceof WC_Product) {
+            return;
+        }
+
+        $video_url = egns_adking_get_product_video_url($product->get_id());
+
+        if (empty($video_url)) {
+            return;
+        }
+
+        $thumbnail_id  = $product->get_image_id();
+        $thumbnail_src = $thumbnail_id ? wp_get_attachment_image_url($thumbnail_id, 'woocommerce_gallery_thumbnail') : wc_placeholder_img_src('woocommerce_gallery_thumbnail');
+        $poster_src    = $thumbnail_id ? wp_get_attachment_image_url($thumbnail_id, 'woocommerce_single') : wc_placeholder_img_src('woocommerce_single');
+        $alt_text      = sprintf(esc_attr__('%s product video', 'adking'), $product->get_name());
+
+        printf(
+            '<div data-thumb="%1$s" data-thumb-alt="%2$s" class="woocommerce-product-gallery__image adking-product-video-slide"><video class="adking-product-gallery-video" src="%3$s" poster="%4$s" muted playsinline preload="metadata" loop></video></div>',
+            esc_url($thumbnail_src),
+            esc_attr($alt_text),
+            esc_url($video_url),
+            esc_url($poster_src)
+        );
+    }
+    add_action('woocommerce_product_thumbnails', 'egns_adking_add_product_video_gallery_slide', 30);
+
+    /**
      * Show quantity minus button
      */
     function aventis_display_quantity_minus()
