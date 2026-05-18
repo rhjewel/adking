@@ -1,0 +1,117 @@
+.egns-widget-icon::before {
+	content: url('../img/sm-icon.svg');
+}
+
+.adking-heading-widget {
+	box-sizing: border-box;
+	width: 100%;
+}
+
+.adking-heading-widget .section-title > span,
+.adking-heading-widget .section-title h2,
+.adking-heading-widget .section-title p,
+.adking-heading-widget .view-all-btn span {
+	word-break: normal;
+	overflow-wrap: anywhere;
+}
+
+.adking-heading-align-left .adking-heading-widget .section-title,
+.adking-heading-align-left .adking-heading-widget .section-title.text-center {
+	text-align: left !important;
+}
+
+.adking-heading-align-center .adking-heading-widget .section-title {
+	text-align: center !important;
+}
+
+.adking-heading-align-right .adking-heading-widget .section-title,
+.adking-heading-align-right .adking-heading-widget .section-title.text-center {
+	text-align: right !important;
+}
+
+.adking-heading-style-four .view-all-btn {
+	max-width: 100%;
+}
+
+.adking-button-widget {
+	width: 100%;
+}
+
+.adking-button-widget .adking-button {
+	max-width: 100%;
+	text-decoration: none;
+}
+
+.adking-button-widget .primary-btn1 {
+	display: inline-flex;
+}
+
+.adking-button-widget .primary-btn2,
+.adking-button-widget .primary-btn3 {
+	display: inline-flex;
+}
+
+.adking-button-widget .view-all-btn,
+.adking-button-widget .explore-btn,
+.adking-button-widget .read-more-btn,
+.adking-button-widget .download-btn,
+.adking-button-widget .contact-btn {
+	color: var(--title-color);
+	font-family: var(--font-poppins);
+	font-weight: 500;
+	font-size: 15px;
+	line-height: 1;
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
+	transition: 0.5s;
+}
+
+.adking-button-widget .view-all-btn svg,
+.adking-button-widget .explore-btn svg,
+.adking-button-widget .read-more-btn svg,
+.adking-button-widget .download-btn svg,
+.adking-button-widget .contact-btn svg {
+	fill: currentColor;
+	transition: 0.5s;
+}
+
+.adking-button-widget .view-all-btn span,
+.adking-button-widget .explore-btn span,
+.adking-button-widget .read-more-btn span,
+.adking-button-widget .download-btn span,
+.adking-button-widget .contact-btn span {
+	background-image: linear-gradient(to bottom, currentColor 0%, currentColor 98%);
+	background-repeat: no-repeat;
+	background-size: 0 1px;
+	background-position: left 100%;
+	transition: background-size 0.75s;
+}
+
+.adking-button-widget .view-all-btn:hover span,
+.adking-button-widget .explore-btn:hover span,
+.adking-button-widget .read-more-btn:hover span,
+.adking-button-widget .download-btn:hover span,
+.adking-button-widget .contact-btn:hover span {
+	background-size: 100% 1px;
+	background-position: 0 100%;
+}
+
+.adking-button-widget .view-all-btn:hover svg,
+.adking-button-widget .explore-btn:hover svg,
+.adking-button-widget .read-more-btn:hover svg,
+.adking-button-widget .download-btn:hover svg,
+.adking-button-widget .contact-btn:hover svg {
+	transform: translateX(3px);
+}
+
+.adking-people-details-widget .people-details-content .social-area .social-list a i {
+	color: var(--primary-color1);
+	font-size: 12px;
+	line-height: 1;
+	transition: 0.5s;
+}
+
+.adking-people-details-widget .people-details-content .social-area .social-list a:hover i {
+	color: var(--primary-color2);
+}

@@ -1,0 +1,1 @@
+# Adking is a stunningly minimal and elegant WordPress Theme.
