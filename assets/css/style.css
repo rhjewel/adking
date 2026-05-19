@@ -6370,16 +6370,6 @@ header.style-2 .nav-right::after {
   color: var(--white-color);
 }
 
-.best-brand-section {
-  background: #fff9f2;
-  padding: 25% 0 120px 0;
-  margin-top: -19%;
-}
-@media (max-width: 576px) {
-  .best-brand-section {
-    padding-bottom: 80px;
-  }
-}
 .best-brand-section .section-title {
   justify-content: center;
 }
