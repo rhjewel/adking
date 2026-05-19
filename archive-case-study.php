@@ -1,7 +1,7 @@
 <?php
 
 /**
- * The template for displaying category archive pages
+ * The template for displaying archive pages
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
@@ -16,31 +16,47 @@ if (!is_front_page()) {
 }
 
 ?>
-<div class="home1-blog-section  mt-120 mb-120">
+
+<div class="case-study-section mt-120 mb-120">
     <div class="container">
-        <div class="row gy-5">
-            <?php
-            if (have_posts()) {
-                while (have_posts()) {
+        <div class="row gy-5 g-4">
+            <?php if (have_posts()) : ?>
+                <?php
+                while (have_posts()) :
                     the_post();
 
-                    if (Egns\Helper\Egns_Helper::egns_check_template_part('blog', 'templates/single/post/post', get_post_format())) {
-
-                        echo apply_filters('egns_filter_blog_single_template', Egns\Helper\Egns_Helper::egns_get_template_part('blog', 'templates/grid/post/post', get_post_format() ? get_post_format() : 'default'));
-                    } else {
-
-                        echo apply_filters('egns_filter_blog_single_template', Egns\Helper\Egns_Helper::egns_get_template_part('blog', 'templates/grid/post/post', 'default'));
-                    }
-                }; // End of the loop.
-
-            } else {
-                // Include global posts not found
-                Egns\Helper\Egns_Helper::egns_template_part('content', 'templates/posts-not-found');
-            }
-            ?>
+                    $case_study_terms = get_the_terms(get_the_ID(), 'case-study-category');
+                    $case_study_term  = (!empty($case_study_terms) && !is_wp_error($case_study_terms)) ? $case_study_terms[0] : null;
+                ?>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="case-study-card">
+                            <?php if (has_post_thumbnail()) : ?>
+                                <a href="<?php the_permalink(); ?>" class="case-study-img hover-img">
+                                    <?php the_post_thumbnail('large', array('alt' => the_title_attribute(array('echo' => false)))); ?>
+                                </a>
+                            <?php endif; ?>
+                            <div class="case-study-content">
+                                <?php if ($case_study_term) : ?>
+                                    <span><?php echo esc_html($case_study_term->name); ?></span>
+                                <?php endif; ?>
+                                <h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+                                <?php if (get_the_excerpt()) : ?>
+                                    <p><?php echo esc_html(wp_trim_words(get_the_excerpt(), 16)); ?></p>
+                                <?php endif; ?>
+                                <a href="<?php the_permalink(); ?>" class="read-more"><?php echo esc_html__('View Details', 'adking'); ?> <i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                <?php endwhile; ?>
+            <?php else : ?>
+                <div class="col-12">
+                    <?php Egns\Helper\Egns_Helper::egns_template_part('content', 'templates/posts-not-found'); ?>
+                </div>
+            <?php endif; ?>
         </div>
         <?php
         $total_pages = Egns\Inc\Blog_Helper::get_total_pages();
+
         if ($total_pages > 1) :
             $current_page = max(1, get_query_var('paged'));
         ?>
@@ -80,5 +96,4 @@ if (!is_front_page()) {
 </div>
 
 <?php
-
 get_footer();

@@ -212,7 +212,7 @@ if (class_exists('WooCommerce')) {
     {
         $average      = (float) $product->get_average_rating();
         $review_count = (int) $product->get_review_count();
-    ?>
+?>
         <div class="rating">
             <ul>
                 <?php for ($star = 1; $star <= 5; $star++) : ?>
@@ -228,7 +228,9 @@ if (class_exists('WooCommerce')) {
     {
     ?>
         <svg class="heart-outline" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
-            <g><path d="M16.528 2.20919C16.0674 1.71411 15.5099 1.31906 14.8902 1.04859C14.2704 0.778112 13.6017 0.637996 12.9255 0.636946C12.2487 0.637725 11.5794 0.777639 10.959 1.048C10.3386 1.31835 9.78042 1.71338 9.31911 2.20854L9.00132 2.54436L8.68352 2.20854C6.83326 0.217151 3.71893 0.102789 1.72758 1.95306C1.63932 2.03507 1.5541 2.12029 1.47209 2.20854C-0.490696 4.32565 -0.490696 7.59753 1.47209 9.71463L8.5343 17.1622C8.77862 17.4201 9.18579 17.4312 9.44373 17.1868C9.45217 17.1788 9.46039 17.1706 9.46838 17.1622L16.528 9.71463C18.4907 7.59776 18.4907 4.32606 16.528 2.20919ZM15.5971 8.82879H15.5965L9.00132 15.7849L2.40553 8.82879C0.90608 7.21113 0.90608 4.7114 2.40553 3.09374C3.76722 1.61789 6.06755 1.52535 7.5434 2.88703C7.61505 2.95314 7.68401 3.0221 7.75012 3.09374L8.5343 3.92104C8.79272 4.17781 9.20995 4.17781 9.46838 3.92104L10.2526 3.09438C11.6142 1.61853 13.9146 1.52599 15.3904 2.88767C15.4621 2.95378 15.531 3.02274 15.5971 3.09438C17.1096 4.71461 17.1207 7.2189 15.5971 8.82879Z" /></g>
+            <g>
+                <path d="M16.528 2.20919C16.0674 1.71411 15.5099 1.31906 14.8902 1.04859C14.2704 0.778112 13.6017 0.637996 12.9255 0.636946C12.2487 0.637725 11.5794 0.777639 10.959 1.048C10.3386 1.31835 9.78042 1.71338 9.31911 2.20854L9.00132 2.54436L8.68352 2.20854C6.83326 0.217151 3.71893 0.102789 1.72758 1.95306C1.63932 2.03507 1.5541 2.12029 1.47209 2.20854C-0.490696 4.32565 -0.490696 7.59753 1.47209 9.71463L8.5343 17.1622C8.77862 17.4201 9.18579 17.4312 9.44373 17.1868C9.45217 17.1788 9.46039 17.1706 9.46838 17.1622L16.528 9.71463C18.4907 7.59776 18.4907 4.32606 16.528 2.20919ZM15.5971 8.82879H15.5965L9.00132 15.7849L2.40553 8.82879C0.90608 7.21113 0.90608 4.7114 2.40553 3.09374C3.76722 1.61789 6.06755 1.52535 7.5434 2.88703C7.61505 2.95314 7.68401 3.0221 7.75012 3.09374L8.5343 3.92104C8.79272 4.17781 9.20995 4.17781 9.46838 3.92104L10.2526 3.09438C11.6142 1.61853 13.9146 1.52599 15.3904 2.88767C15.4621 2.95378 15.531 3.02274 15.5971 3.09438C17.1096 4.71461 17.1207 7.2189 15.5971 8.82879Z" />
+            </g>
         </svg>
         <svg class="heart-filled" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
             <path d="M16.528 2.20919C16.0674 1.71411 15.5099 1.31906 14.8902 1.04859C14.2704 0.778112 13.6017 0.637996 12.9255 0.636946C12.2487 0.637725 11.5794 0.777639 10.959 1.048C10.3386 1.31835 9.78042 1.71338 9.31911 2.20854L9.00132 2.54436L8.68352 2.20854C6.83326 0.217151 3.71893 0.102789 1.72758 1.95306C1.63932 2.03507 1.5541 2.12029 1.47209 2.20854C-0.490696 4.32565 -0.490696 7.59753 1.47209 9.71463L8.5343 17.1622C8.77862 17.4201 9.18579 17.4312 9.44373 17.1868C9.45217 17.1788 9.46039 17.1706 9.46838 17.1622L16.528 9.71463C18.4907 7.59776 18.4907 4.32606 16.528 2.20919Z" />
@@ -343,7 +345,7 @@ if (class_exists('WooCommerce')) {
 
         <?php if (!empty($wrapper_class)) : ?>
             <div class="<?php echo esc_attr($wrapper_class); ?>">
-        <?php endif; ?>
+            <?php endif; ?>
             <div class="product-card hover-btn">
                 <div class="product-card-img double-img">
                     <a href="<?php echo esc_url($product_permalink); ?>">
@@ -352,7 +354,7 @@ if (class_exists('WooCommerce')) {
                     </a>
                     <div class="overlay">
                         <div class="cart-area">
-                            <a class="<?php echo esc_attr($button_classes); ?>" <?php foreach ($add_to_cart_attrs as $attr => $value) : ?> <?php echo esc_attr($attr); ?>="<?php echo esc_attr($value); ?>"<?php endforeach; ?>>
+                            <a class="<?php echo esc_attr($button_classes); ?>" <?php foreach ($add_to_cart_attrs as $attr => $value) : ?> <?php echo esc_attr($attr); ?>="<?php echo esc_attr($value); ?>" <?php endforeach; ?>>
                                 <i class="bi bi-bag-check"></i><?php echo esc_html($product_object->add_to_cart_text()); ?>
                             </a>
                         </div>
@@ -377,7 +379,7 @@ if (class_exists('WooCommerce')) {
                 </div>
                 <span class="for-border"></span>
             </div>
-        <?php if (!empty($wrapper_class)) : ?>
+            <?php if (!empty($wrapper_class)) : ?>
             </div>
         <?php endif; ?>
 
@@ -651,15 +653,15 @@ if (class_exists('WooCommerce')) {
             <div class="user-login">
                 <?php if (is_user_logged_in()) : ?>
                     <a class="user-btn" href="<?php echo esc_url(wc_get_page_permalink('myaccount')); ?>" aria-label="<?php echo esc_attr__('My account', 'adking'); ?>">
-                <?php else : ?>
-                    <button type="button" class="user-btn" data-bs-toggle="modal" data-bs-target="#user-login" aria-label="<?php echo esc_attr__('Login', 'adking'); ?>">
-                <?php endif; ?>
+                    <?php else : ?>
+                        <button type="button" class="user-btn" data-bs-toggle="modal" data-bs-target="#user-login" aria-label="<?php echo esc_attr__('Login', 'adking'); ?>">
+                        <?php endif; ?>
                         <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_122_313)">
                                 <path d="M15.364 11.636C14.3837 10.6558 13.217 9.93013 11.9439 9.49085C13.3074 8.55179 14.2031 6.9802 14.2031 5.20312C14.2031 2.33413 11.869 0 9 0C6.131 0 3.79688 2.33413 3.79688 5.20312C3.79688 6.9802 4.69262 8.55179 6.05609 9.49085C4.78308 9.93013 3.61631 10.6558 2.63605 11.636C0.936176 13.3359 0 15.596 0 18H1.40625C1.40625 13.8128 4.81279 10.4062 9 10.4062C13.1872 10.4062 16.5938 13.8128 16.5938 18H18C18 15.596 17.0638 13.3359 15.364 11.636ZM9 9C6.90641 9 5.20312 7.29675 5.20312 5.20312C5.20312 3.1095 6.90641 1.40625 9 1.40625C11.0936 1.40625 12.7969 3.1095 12.7969 5.20312C12.7969 7.29675 11.0936 9 9 9Z" />
                             </g>
                         </svg>
-                <?php if (is_user_logged_in()) : ?>
+                        <?php if (is_user_logged_in()) : ?>
                     </a>
                 <?php else : ?>
                     </button>
@@ -806,7 +808,7 @@ if (class_exists('WooCommerce')) {
                 <span class="no-results-description"><?php echo esc_html__('Nothing Match your search terms. Please try again with some different keywords.', 'adking'); ?></span>
             </div>
         </div>
-    <?php
+<?php
     }
     add_action('egns_aventis_shop_page_no_products', 'egns_aventis_shop_no_products');
 

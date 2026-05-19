@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying product content in the single-product.php template
  *
@@ -65,6 +66,17 @@ if (post_password_required()) {
 				 */
 				do_action('woocommerce_single_product_summary');
 				?>
+				<div class="direct-quote">
+					<h4>Get a Free Quote — WhatsApp or Inquiry Form</h4>
+					<div class="buttons-group">
+						<a class="primary-btn1 hover-btn3" href="#">
+							<span><i class="bi bi-whatsapp"></i> WhatsApp</span>
+						</a>
+						<a class="primary-btn1 hover-btn3" href="#">
+							<span><i class="bi bi-send-fill"></i> Direct Inquiry</span>
+						</a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -782,6 +782,11 @@ nav.wp-block-query-pagination {
 .blog-card {
   padding: 28px 28px 35px 28px;
   border: 1px solid var(--borders-color);
+  margin-bottom: 50px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 
   @include xl-device() {
     padding: 20px 20px 35px 20px;
@@ -1082,6 +1087,7 @@ nav.wp-block-query-pagination {
           font-size: 14px;
         }
 
+        &.current,
         &:hover {
           background-color: var(--primary-color2);
           border-color: var(--primary-color2);
