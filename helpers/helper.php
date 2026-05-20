@@ -299,12 +299,11 @@ if (!class_exists('Egns_Helper')) {
 ?>
 			<div class="blog-dt-related-blog-section mt-120">
 				<div class="container one">
-					<div class="row justify-content-center mb-60">
+					<div class="row justify-content-center">
 						<div class="col-xl-10 col-lg-10 col-md-9">
 							<div class="section-title text-center">
-								<span><?php echo esc_html__('Related Article', 'adking'); ?></span>
 								<h2 class="text-anim">
-									<?php echo wp_kses_post('Stay informed with expert <strong>insights, industry trends, and practical guidance.</strong>'); ?>
+									<?php echo esc_html__('Related News', 'adking'); ?>
 								</h2>
 							</div>
 						</div>

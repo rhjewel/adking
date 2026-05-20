@@ -16,6 +16,8 @@
  * @version 3.6.0
  */
 
+use Egns\Helper\Egns_Helper;
+
 defined('ABSPATH') || exit;
 
 global $product;
@@ -67,13 +69,13 @@ if (post_password_required()) {
 				do_action('woocommerce_single_product_summary');
 				?>
 				<div class="direct-quote">
-					<h4>Get a Free Quote — WhatsApp or Inquiry Form</h4>
+					<h4><?php echo Egns_Helper::egns_get_theme_option('product_quote_title'); ?></h4>
 					<div class="buttons-group">
-						<a class="primary-btn1 hover-btn3" href="#">
-							<span><i class="bi bi-whatsapp"></i> WhatsApp</span>
+						<a class="primary-btn1 hover-btn3" href="<?php echo esc_url(Egns_Helper::egns_get_theme_option('product_qoute_whatapp', 'url')); ?>" target="<?php echo esc_url(Egns_Helper::egns_get_theme_option('product_qoute_whatapp', 'target')); ?>">
+							<span><i class="bi bi-whatsapp"></i> <?php echo Egns_Helper::egns_get_theme_option('product_qoute_whatapp', 'text'); ?></span>
 						</a>
-						<a class="primary-btn1 hover-btn3" href="#">
-							<span><i class="bi bi-send-fill"></i> Direct Inquiry</span>
+						<a class="primary-btn1 hover-btn3" href="<?php echo esc_url(Egns_Helper::egns_get_theme_option('product_qoute_inquiry', 'url')); ?>" target="<?php echo esc_url(Egns_Helper::egns_get_theme_option('product_qoute_inquiry', 'target')); ?>">
+							<span><i class="bi bi-send-fill"></i> <?php echo Egns_Helper::egns_get_theme_option('product_qoute_inquiry', 'text'); ?></span>
 						</a>
 					</div>
 				</div>

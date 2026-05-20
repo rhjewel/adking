@@ -117,29 +117,6 @@ function aventis_fallback_document_title($title)
 add_filter('pre_get_document_title', 'aventis_fallback_document_title', 999);
 
 
-
-/**
- * Custom post people posts_per_page
- **/
-add_action('pre_get_posts', function ($query) {
-	$number = Egns_Helper::egns_get_theme_option('people_posts_per_page') ?? '8';
-	// Only modify the main query on the frontend
-	if (!is_admin() && $query->is_main_query() && is_post_type_archive('people')) {
-		$query->set('posts_per_page', $number);
-	}
-});
-
-/**
- * Custom post career posts_per_page
- **/
-add_action('pre_get_posts', function ($query) {
-	$number = Egns_Helper::egns_get_theme_option('career_posts_per_page') ?? '9';
-	// Only modify the main query on the frontend
-	if (!is_admin() && $query->is_main_query() && is_post_type_archive('career')) {
-		$query->set('posts_per_page', $number);
-	}
-});
-
 /**
  * Custom post case-study posts_per_page
  **/

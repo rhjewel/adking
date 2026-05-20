@@ -33,7 +33,7 @@ get_header();
                         <?php endif; ?>
                         <?php if (!empty($button_text)) : ?>
                             <div class="btn-area">
-                                <a href="<?php echo esc_url(home_url('/')); ?>" class="primary-btn3 two">
+                                <a href="<?php echo esc_url(home_url('/')); ?>" class="primary-btn1 hover-btn3">
                                     <span data-text="<?php echo esc_attr($button_text); ?>"><?php echo esc_html($button_text); ?></span>
                                     <svg width="10" height="10" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg">
                                         <g>
@@ -59,7 +59,7 @@ get_header();
                         <h2><?php echo esc_html__('Something Went Missing', 'adking') ?></h2>
                         <p><?php echo esc_html__('Oops! The page you’re trying to reach can’t be found or may have been moved. Don’t worry — you can continue exploring.', 'adking') ?></p>
                         <div class="btn-area">
-                            <a href="<?php echo esc_url(home_url('/')); ?>" class="primary-btn3 two">
+                            <a href="<?php echo esc_url(home_url('/')); ?>" class="primary-btn1 hover-btn3">
                                 <span data-text="<?php echo esc_attr__('Go to homepage', 'adking') ?>"><?php echo esc_html__('Go to homepage', 'adking') ?></span>
                                 <svg width="10" height="10" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg">
                                     <g>

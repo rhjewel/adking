@@ -314,15 +314,37 @@ if (class_exists('WooCommerce')) {
         $product_title     = $product_object->get_name();
         $product_permalink = get_permalink($product_id);
         $product_price     = $product_object->get_price_html();
-        $primary_image     = wp_get_attachment_image_url($product_object->get_image_id(), 'woocommerce_thumbnail');
+        $primary_image     = wp_get_attachment_image_url($product_object->get_image_id(), 'full');
         $gallery_ids       = $product_object->get_gallery_image_ids();
-        $secondary_image   = !empty($gallery_ids) ? wp_get_attachment_image_url($gallery_ids[0], 'woocommerce_thumbnail') : '';
+        $secondary_image   = !empty($gallery_ids) ? wp_get_attachment_image_url($gallery_ids[0], 'full') : '';
         $primary_image     = $primary_image ? $primary_image : wc_placeholder_img_src('woocommerce_thumbnail');
         $secondary_image   = $secondary_image ? $secondary_image : $primary_image;
         $image_alt         = get_post_meta($product_object->get_image_id(), '_wp_attachment_image_alt', true);
         $image_alt         = $image_alt ? $image_alt : $product_title;
-        $categories        = wc_get_product_category_list($product_id, ', ');
+        // $categories        = wc_get_product_category_list($product_id, ', ');
         $price_label       = $product_object->is_type('variable') ? esc_html__('Starting From :', 'adking') : esc_html__('Price :', 'adking');
+
+        $terms = get_the_terms($product_id, 'product_cat');
+
+        $categories = '';
+
+        if (!empty($terms) && !is_wp_error($terms)) {
+
+            // Limit categories to 3
+            $terms = array_slice($terms, 0, 3);
+
+            $category_links = [];
+
+            foreach ($terms as $term) {
+                $category_links[] = sprintf(
+                    '<a href="%s">%s</a>',
+                    esc_url(get_term_link($term)),
+                    esc_html($term->name)
+                );
+            }
+
+            $categories = implode(', ', $category_links);
+        }
 
         $button_classes = implode(' ', array_filter(array(
             'hover-btn3',
@@ -371,7 +393,9 @@ if (class_exists('WooCommerce')) {
                     <?php if (!empty($categories)) : ?>
                         <p><?php echo wp_kses_post($categories); ?></p>
                     <?php endif; ?>
-                    <span><?php echo esc_html($price_label); ?></span>
+                    <?php if (!empty($product_price)) : ?>
+                        <span><?php echo esc_html($price_label); ?></span>
+                    <?php endif ?>
                     <div class="price-and-rating">
                         <p class="price"><?php echo wp_kses_post($product_price); ?></p>
                         <?php egns_aventis_product_card_rating($product_object); ?>
@@ -425,6 +449,8 @@ if (class_exists('WooCommerce')) {
 
         $related_products = new WP_Query($args);
 
+        $count = $related_products->found_posts;
+
         if (!$related_products->have_posts()) {
             wp_reset_postdata();
             return;
@@ -450,22 +476,24 @@ if (class_exists('WooCommerce')) {
                         </div>
                     </div>
                 </div>
-                <div class="slider-btn-grp two">
-                    <div class="slider-btn related-product-slider-prev">
-                        <svg width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
-                            <g>
-                                <path d="M2 6L10 12V0L2 6Z" />
-                            </g>
-                        </svg>
+                <?php if ($count >= 4) : ?>
+                    <div class="slider-btn-grp two">
+                        <div class="slider-btn related-product-slider-prev">
+                            <svg width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
+                                <g>
+                                    <path d="M2 6L10 12V0L2 6Z" />
+                                </g>
+                            </svg>
+                        </div>
+                        <div class="slider-btn related-product-slider-next">
+                            <svg width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
+                                <g>
+                                    <path d="M10.6665 6L2.6665 12L2.6665 0L10.6665 6Z" />
+                                </g>
+                            </svg>
+                        </div>
                     </div>
-                    <div class="slider-btn related-product-slider-next">
-                        <svg width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
-                            <g>
-                                <path d="M10.6665 6L2.6665 12L2.6665 0L10.6665 6Z" />
-                            </g>
-                        </svg>
-                    </div>
-                </div>
+                <?php endif; ?>
             </div>
         </div>
     <?php

@@ -17,12 +17,12 @@
         'comment_field' => '<div class="col-12 form-inner two"><label>' . esc_html__('Message*', 'adking') . '</label><textarea class=" text__area" id="comment" name="comment" cols="45" rows="8" placeholder="' . esc_attr__('Your Message', 'adking') . '"></textarea></div>',
 
         'submit_button' => '<div class="form-inner">
-        <button type="submit" class="primary-btn3">
+        <button type="submit" class="primary-btn1 hover-btn3">
             <span data-text=" ' . esc_html__('Post a Comment', 'adking') . '">' . esc_html__('Post a Comment', 'adking') . '</span>
         </button>
     </div>',
 
-        'class_submit' => 'primary-btn3',
+        'class_submit' => 'primary-btn1 hover-btn3',
         'label_submit' => esc_html__('Post a Comment', 'adking'),
         'format'       => 'xhtml'
     );

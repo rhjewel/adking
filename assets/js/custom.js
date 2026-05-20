@@ -286,7 +286,80 @@
       },
     });
   }
+  // Home2 Banner Slider
+  var bannerContentSwiper = new Swiper(".home2-banner-content-slider", {
+    loop: false,
+    speed: 1200,
+    slidesPerView: 1,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+    breakpoints: {
+      280: {
+        slidesPerView: 1
+      },
+      386: {
+        slidesPerView: 1
+      },
+      576: {
+        slidesPerView: 2,
+        spaceBetween: 15
+      },
+      768: {
+        slidesPerView: 3,
+        spaceBetween: 15
+      },
+      992: {
+        slidesPerView: 4,
+        spaceBetween: 15
+      },
+      1200: {
+        slidesPerView: 4
+      },
+      1400: {
+        slidesPerView: 4
+      },
+    },
+  });
+  var swiper = new Swiper(".home2-banner-slider", {
+    loop: false,
+    speed: 1200,
+    effect: "fade",
+    slidesPerView: 1,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+    thumbs: {
+      swiper: bannerContentSwiper,
+    },
 
+    on: {
+      init: function () {
+        updateProgress(this.activeIndex);
+      },
+      slideChangeTransitionStart: function () {
+        updateProgress(this.activeIndex);
+      }
+    },
+  });
+
+  function updateProgress(index) {
+    // remove all animate class
+    document.querySelectorAll(".slide_progress-bar").forEach(function (el) {
+      el.classList.remove("animate");
+    });
+
+    // add animate class to active one
+    var activeProgress = document.querySelectorAll(".slide_progress-bar")[index];
+    if (activeProgress) {
+      // restart animation trick
+      activeProgress.classList.remove("animate");
+      void activeProgress.offsetWidth;
+      activeProgress.classList.add("animate");
+    }
+  }
   //wow js
   jQuery(window).on("load", function () {
     new WOW().init();
